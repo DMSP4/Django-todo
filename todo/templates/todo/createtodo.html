@@ -9,16 +9,16 @@
 </head>
 <body>
     {% block content %} 
-    <h1>Current Todos</h1>
+    <h1>Create</h1>
     
-    <ul>
-        {% for todo in todos %}
-        <li>{% if todo.important %}<b>{% endif %}{{todo.title}}{% if todo.important %}</b>{% endif %}
-            {% if todo.memo %} - {{ todo.memo }}{% endif %}
-        </li>
-        
-        {% endfor %}
-    </ul>
+    <h2>{{ error }}</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button> 
+    </form>
+    
     
     {% endblock content %}
 </body>
